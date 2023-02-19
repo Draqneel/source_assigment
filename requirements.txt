@@ -1,3 +1,5 @@
-fastapi==0.92.0
+fastapi
+uvicorn
+psycopg2
 pydantic==1.10.4
 SQLAlchemy==2.0.3

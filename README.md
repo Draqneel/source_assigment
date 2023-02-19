@@ -5,11 +5,11 @@ I have a local installation but the easiest way is described by the [link](https
 ###  2. Add env variables in your OS:
 We need 5 env variables:
 ```bash
-EXPORT POSTGRES_USER = ..;
-EXPORT POSTGRES_PASSWORD = ..;
-EXPORT POSTGRES_DB = ..;
-EXPORT POSTGRES_SERVER = ..; # optional, localhost is default
-EXPORT POSTGRES_PORT = ..; # optional, 5432 is default
+export POSTGRES_USER=..;
+export POSTGRES_PASSWORD=..;
+export POSTGRES_DB=..;
+export POSTGRES_SERVER=..; # optional, localhost is default
+export POSTGRES_PORT=..; # optional, 5432 is default
 ```
 ###  3. Create python virtual env
 ```bash
