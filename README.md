@@ -31,7 +31,64 @@ uvicorn main:app --reload
 ```
 # API doc
 
-http://127.0.0.1:8000/docs
+In target architecture we should use AirFlow (or similar lib) for scheduling our calculations.  
+But now we have to main endpoits:
+
+[raw recalculation](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L45)  
+[ods recalculation (relational layer)](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L55)  
+
+example: [GET] -> http://127.0.0.1:8000/raw/ws_source_meteo/raw_meteo/recalculation
+
+After we can run calculations of our aggregates:  
+
+[Expose the latest weather conditions (i.e. show what's happening now)](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L66)  
+[Expose the development of the weather parameters over the last 24h in 15 min increments](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L103)  
+[Expose the average for each of the weather parameters for the last 24h](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L77)  
+[Expose the development of the weather parameters over the last 7 days in 1 day increments (average per day)](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L94)  
+[Expose the average of the weather parameters over the last 7 days](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L85)  
+
+# Project structure
+
+```bash
+├── LICENSE
+├── README.md
+├── __init__.py
+├── configs  # directory contains configuration info
+│   ├── __init__.py
+│   ├── db_conf.py  # database conn
+│   └── etl_conf.py  # searching raw data for etl
+├── data
+│   ├── may  # main directory for data
+├── database.py  # init file for SqlAlchemy db conn
+├── etl  # directory contains business logic with structure layer/source_system/process
+│   ├── __init__.py
+│   ├── ods
+│   │   ├── __init__.py
+│   │   └── ws_source_meteo
+│   │       ├── __init__.py
+│   │       └── fact_meteo_snp
+│   │           ├── __init__.py
+│   │           ├── aggregations.py 
+│   │           ├── loader.py
+│   │           └── schema.py
+│   └── raw
+│       ├── __init__.py
+│       └── ws_source_meteo
+│           ├── __init__.py
+│           └── raw_meteo
+│               ├── __init__.py
+│               ├── loader.py
+│               └── schema.py
+├── git_staff
+│   ├── Future.jpg
+│   └── Source.jpg
+├── main.py
+├── models.py  # entities desc
+├── requirements.txt
+└── tools.py  # reusable code
+
+
+```
 
 # About architecture
 ## Top level architecture:
