@@ -35,7 +35,7 @@ http://127.0.0.1:8000/docs
 
 # About architecture
 ## Top level architecture:
-![top](https://disk.yandex.ru/i/owTB1rXAWL1xPA)
+![top](https://github.com/Draqneel/source_assigment/blob/main/git_staff/Source.jpg?raw=true)
 
 ### Calculations plan
 
@@ -43,4 +43,4 @@ http://127.0.0.1:8000/docs
 
 2. The calculation of the table depends on the needs of the business. For example when RAW calculation ends it can trigger ODS calculation. We take all raw data in which the value of the created_at field is greater than the last one uploaded by us (stored in the CTL technical table)
 ## Future architecture:
-![future](https://disk.yandex.ru/i/AmgLxJEuUMQpgw)
+![future](https://github.com/Draqneel/source_assigment/blob/main/git_staff/Future.jpg?raw=true)
