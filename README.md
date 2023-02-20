@@ -32,7 +32,7 @@ uvicorn main:app --reload
 # API doc
 
 In target architecture we should use AirFlow (or similar lib) for scheduling our calculations.  
-But now we have to main endpoits:
+But now we have two main endpoits:
 
 [raw recalculation](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L45)  
 [ods recalculation (relational layer)](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L55)  
@@ -96,8 +96,11 @@ After we can run calculations of our aggregates:
 
 ### Calculations plan
 
-1. Calculation of raw data every hour.
-
-2. The calculation of the table depends on the needs of the business. For example when RAW calculation ends it can trigger ODS calculation. We take all raw data in which the value of the created_at field is greater than the last one uploaded by us (stored in the CTL technical table)
+1. Calculation plan depends on data amounts, currently we can recalculate data every 5 min on single machine.  
+2. In the future, when the system have to process significantly more data,  we should create a pipeline in which the data gets into RAW instantly (almost). 
+   And we can plan calculations based on the needs of the business, the amount of data and the reliability of the data source.
+3. The calculation of the table depends on the needs of the business too. For example when RAW calculation ends it can trigger ODS calculation. 
+   We take all raw data in which the value of the created_at field is greater than the last one uploaded by us (stored in the CTL technical table).
+4. Aggregations should be stored in Views or a separate in-memory storage.    
 ## Future architecture:
 ![future](https://github.com/Draqneel/source_assigment/blob/main/git_staff/Future.jpg?raw=true)

@@ -101,9 +101,9 @@ def weather_conditions_last_week_avg_trunked_endpoint(db: Session = Depends(get_
 
 
 @app.get('/weather_conditions/last_day_changes_fifteen_min')
-def weather_conditions_last_week_avg_trunked_endpoint(db: Session = Depends(get_db)):
+def weather_conditions_last_day_changes_fifteen_min(db: Session = Depends(get_db)):
     try:
         return JSONResponse(content=jsonable_encoder(last_day_changes_fifteen_min(db)))
     except Exception as e:
-        log.error(f"*** Error in *_last_week_avg_trunked_endpoint '{str(e)}'. Sent 500.")
+        log.error(f"*** Error in *_last_day_changes_fifteen_min '{str(e)}'. Sent 500.")
         return JSONResponse(content=None, status_code=500)
