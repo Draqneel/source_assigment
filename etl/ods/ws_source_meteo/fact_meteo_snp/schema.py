@@ -1,9 +1,7 @@
 from datetime import datetime
 from pydantic import (
     BaseModel,
-    Json,
 )
-from typing import Union
 
 
 class OdsFactMeteoSnpMeta(BaseModel):

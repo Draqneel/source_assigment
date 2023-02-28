@@ -7,7 +7,7 @@ from collections import defaultdict
 from models import RawMeteo, OdsFactMeteoSnp
 
 
-def _prepare_extracted_data(db: Session):
+def _prepare_extracted_data(db: Session) -> List[RawMeteo]:
     return db.query(RawMeteo).all()
 
 

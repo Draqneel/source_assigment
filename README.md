@@ -1,3 +1,7 @@
+# Assignment for <yet_another_company_name>
+
+Description -> https://github.com/source-ag/assignment-software-engineering/blob/main/assignment.md
+
 # Installation
 
 ###  1. Install PostreSQL DBMS
@@ -103,4 +107,4 @@ After we can run calculations of our aggregates:
    We take all raw data in which the value of the created_at field is greater than the last one uploaded by us (stored in the CTL technical table).
 4. Aggregations should be stored in Views or a separate in-memory storage.    
 ## Future architecture:
-![future](https://github.com/Draqneel/source_assigment/blob/main/git_staff/Future.jpg?raw=true)
+![future](https://github.com/Draqneel/source_assigment/blob/main/git_staff/Future.jpeg?raw=true)

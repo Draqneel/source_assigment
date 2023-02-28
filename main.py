@@ -42,7 +42,7 @@ ONLY for full tables recalculation, regular calculations should use the CTL tabl
 
 
 @app.get('/raw/ws_source_meteo/raw_meteo/recalculation')
-def raw_meteo_recalculation_endpoint(db: Session = Depends(get_db)):
+def raw_meteo_recalculation_endpoint(db: Session = Depends(get_db)) -> JSONResponse:
     # TODO: Access only for staff members with WRITE rights
     try:
         raw_meteo_calculation(db)
@@ -53,7 +53,7 @@ def raw_meteo_recalculation_endpoint(db: Session = Depends(get_db)):
 
 
 @app.get('/ods/ws_source_meteo/fact_meteo_snp/recalculation')
-def fact_meteo_snp_recalculation_endpoint(db: Session = Depends(get_db)):
+def fact_meteo_snp_recalculation_endpoint(db: Session = Depends(get_db)) -> JSONResponse:
     # TODO: Access only for staff members with WRITE rights
     try:
         fact_meteo_snp_calculation(db)
@@ -65,7 +65,7 @@ def fact_meteo_snp_recalculation_endpoint(db: Session = Depends(get_db)):
 
 @app.get('/weather_conditions/latest',
          response_model=OdsFactMeteoSnpMeta)
-def weather_conditions_latest_endpoint(db: Session = Depends(get_db)):
+def weather_conditions_latest_endpoint(db: Session = Depends(get_db)) -> JSONResponse:
     try:
         return JSONResponse(content=jsonable_encoder(latest(db)))
     except Exception as e:
@@ -74,7 +74,7 @@ def weather_conditions_latest_endpoint(db: Session = Depends(get_db)):
 
 
 @app.get('/weather_conditions/last_day_avg')
-def weather_conditions_last_day_avg_endpoint(db: Session = Depends(get_db)):
+def weather_conditions_last_day_avg_endpoint(db: Session = Depends(get_db)) -> JSONResponse:
     try:
         return JSONResponse(content=jsonable_encoder(last_days_avg(db, 1)))
     except Exception as e:
@@ -83,7 +83,7 @@ def weather_conditions_last_day_avg_endpoint(db: Session = Depends(get_db)):
 
 
 @app.get('/weather_conditions/last_week_avg')
-def weather_conditions_last_week_avg_endpoint(db: Session = Depends(get_db)):
+def weather_conditions_last_week_avg_endpoint(db: Session = Depends(get_db)) -> JSONResponse:
     try:
         return JSONResponse(content=jsonable_encoder(last_days_avg(db, 7)))
     except Exception as e:
@@ -92,7 +92,7 @@ def weather_conditions_last_week_avg_endpoint(db: Session = Depends(get_db)):
 
 
 @app.get('/weather_conditions/last_week_avg_trunked')
-def weather_conditions_last_week_avg_trunked_endpoint(db: Session = Depends(get_db)):
+def weather_conditions_last_week_avg_trunked_endpoint(db: Session = Depends(get_db)) -> JSONResponse:
     try:
         return JSONResponse(content=jsonable_encoder(last_week_avg_trunked(db)))
     except Exception as e:
@@ -101,9 +101,9 @@ def weather_conditions_last_week_avg_trunked_endpoint(db: Session = Depends(get_
 
 
 @app.get('/weather_conditions/last_day_changes_fifteen_min')
-def weather_conditions_last_day_changes_fifteen_min(db: Session = Depends(get_db)):
+def weather_conditions_last_day_changes_fifteen_min(db: Session = Depends(get_db)) -> JSONResponse:
     try:
-        return JSONResponse(content=jsonable_encoder(last_day_changes_fifteen_min(db)))
+        return JSONResponse(content=jsonable_encoder(last_day_changes_fifteen_min(db, 15)))
     except Exception as e:
         log.error(f"*** Error in *_last_day_changes_fifteen_min '{str(e)}'. Sent 500.")
         return JSONResponse(content=None, status_code=500)

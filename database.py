@@ -14,6 +14,11 @@ Base = declarative_base()
 
 
 def get_db():
+    """
+    recommended use case from
+    https://fastapi.tiangolo.com/tutorial/sql-databases/#create-the-database-tables
+    """
+
     db = SessionLocal()
     try:
         yield db
