@@ -76,11 +76,11 @@ def last_week_avg_trunked(db: Session) -> dict:
     return row_data_to_dict(db.execute(sql_query).keys(), db.execute(sql_query).fetchall())
 
 
-def last_day_changes_fifteen_min(db: Session, min_count: int) -> dict:
+def last_day_changes_fifteen_min(db: Session) -> dict:
     sql_query = text("""
        SELECT
           date_trunc('hour', meteo_created_dttm) +
-          (((date_part('minute', meteo_created_dttm)::integer / :min_count ::integer) * :min_count ::integer)
+          (((date_part('minute', meteo_created_dttm)::integer / 15::integer) * 15::integer)
           || ' minutes')::interval                  AS dttm
         , AVG(external_temperature_c)               AS external_temperature_c_avg
         , AVG(wind_speed_unmuted_m_s)               AS wind_speed_unmuted_m_s_avg
@@ -105,6 +105,6 @@ def last_day_changes_fifteen_min(db: Session, min_count: int) -> dict:
     WHERE meteo_created_dttm BETWEEN (DATE '2021-05-04' - interval ':days_cnt day') AND DATE '2021-05-04'
     GROUP BY dttm
     ORDER BY dttm
-        """).bindparams(days_cnt=1, min_count=min_count)
+        """).bindparams(days_cnt=1)
 
     return row_data_to_dict(db.execute(sql_query).keys(), db.execute(sql_query).fetchall())
