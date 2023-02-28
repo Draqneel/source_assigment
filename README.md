@@ -1,4 +1,4 @@
-# Assignment for <yet_another_company_name>
+# Home assignment
 
 Description -> https://github.com/source-ag/assignment-software-engineering/blob/main/assignment.md
 
@@ -7,7 +7,7 @@ Description -> https://github.com/source-ag/assignment-software-engineering/blob
 ###  1. Install PostreSQL DBMS
 I have a local installation but the easiest way is described by the [link](https://hevodata.com/learn/docker-postgresql/#3steps)
 ###  2. Add env variables in your OS:
-We need 5 env variables:
+We need to add 5 env variables: 
 ```bash
 export POSTGRES_USER=..;
 export POSTGRES_PASSWORD=..;
@@ -51,6 +51,12 @@ After we can run calculations of our aggregates:
 [Expose the development of the weather parameters over the last 7 days in 1 day increments (average per day)](https://github.com/Draqneel/source_assigment/blob/main/main.py#L94)  
 [Expose the average of the weather parameters over the last 7 days](https://github.com/Draqneel/source_assigment/blob/main/main.py#L85)  
 
+# Test cases
+We have tests only for tools currently (you can find it in project structure).  
+Also, for example, we can create tests for aggregations, storing mock data, download it in temp tables and
+run aggregation queries under this table.
+
+
 # Project structure
 
 ```bash
@@ -86,6 +92,10 @@ After we can run calculations of our aggregates:
 ├── git_staff
 │   ├── Future.jpg
 │   └── Source.jpg
+├── tests 
+│   ├── __init__.py
+│   ├── test_tools.py
+│   ├── mock_data 
 ├── main.py
 ├── models.py  # entities desc
 ├── requirements.txt
