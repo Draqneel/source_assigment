@@ -45,11 +45,11 @@ example: [GET] -> http://127.0.0.1:8000/raw/ws_source_meteo/raw_meteo/recalculat
 
 After we can run calculations of our aggregates:  
 
-[Expose the latest weather conditions (i.e. show what's happening now)](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L66)  
-[Expose the development of the weather parameters over the last 24h in 15 min increments](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L103)  
-[Expose the average for each of the weather parameters for the last 24h](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L77)  
-[Expose the development of the weather parameters over the last 7 days in 1 day increments (average per day)](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L94)  
-[Expose the average of the weather parameters over the last 7 days](https://github.com/Draqneel/source_assigment/blob/de9a00d03c9623a9d04653bac043dbdcd4038ff3/main.py#L85)  
+[Expose the latest weather conditions (i.e. show what's happening now)](https://github.com/Draqneel/source_assigment/blob/main/main.py#L66)  
+[Expose the development of the weather parameters over the last 24h in 15 min increments](https://github.com/Draqneel/source_assigment/blob/main/main.py#L103)  
+[Expose the average for each of the weather parameters for the last 24h](https://github.com/Draqneel/source_assigment/blob/main/main.py#L76)  
+[Expose the development of the weather parameters over the last 7 days in 1 day increments (average per day)](https://github.com/Draqneel/source_assigment/blob/main/main.py#L94)  
+[Expose the average of the weather parameters over the last 7 days](https://github.com/Draqneel/source_assigment/blob/main/main.py#L85)  
 
 # Project structure
 
